@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="input" default="/camera/rgb/image_raw" /> <!-- input image topic name -->
+  <arg name="detection_threshold" default="0.5" />
+  <arg name="config" default="$(find detectron2_ros)/config/R-50-crowdhuman.yaml" />
+  <arg name="model" default="$(find detectron2_ros)/models/R-50-crowdhuman.pth" />
+  <arg name="visualization" default="true" />
+
+  <node name="detectron2_ros"  pkg="detectron2_ros" type="detectron2_ros" output="screen" >
+    <param name="input" value="$(arg input)" />
+    <param name="detection_threshold" value="$(arg detection_threshold)" />
+    <param name="config" value="$(arg config)" />
+    <param name="model" value="$(arg model)" />
+    <param name="visualization" value="$(arg visualization)" />
+  </node>
+</launch>

@@ -62,3 +62,20 @@ install(DIRECTORY
   msg
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+
+## Download model weights and trained weights
+set(MODELPATH "${CMAKE_CURRENT_SOURCE_DIR}/models/R-50.pkl")
+if (NOT EXISTS "${MODELPATH}")
+  message(STATUS " Unable to find R-50 pkl model weights. Downloading now ...")
+  execute_process(COMMAND wget -q https://dl.fbaipublicfiles.com/detectron/ImageNetPretrained/MSRA/R-50.pkl -P ${MODELPATH})
+endif()
+set(MODELPATH "${CMAKE_CURRENT_SOURCE_DIR}/models/R-50-crowdhuman.pth")
+if (NOT EXISTS "${MODELPATH}")
+  message(STATUS " Unable to find R-50 pkl model weights. Downloading now ...")
+  execute_process(COMMAND wget -q https://github.com/y-lai/Detectron2_ros/releases/download/v0.0/model_final.pth -P ${MODELPATH})
+endif()
+set(MODELPATH "${CMAKE_CURRENT_SOURCE_DIR}/models/NoH-NMS-crowdhuman.pth")
+if (NOT EXISTS "${MODELPATH}")
+  message(STATUS " Unable to find R-50 pkl model weights. Downloading now ...")
+  execute_process(COMMAND wget -q https://github.com/y-lai/Detectron2_ros/releases/download/v0.0/model_final_nohnms.pth -P ${MODELPATH})
+endif()
