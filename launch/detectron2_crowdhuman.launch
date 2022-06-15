@@ -6,7 +6,7 @@
   <arg name="model" default="$(find detectron2_ros)/models/R-50-crowdhuman.pth" />
   <arg name="visualization" default="true" />
 
-  <node name="detectron2_ros" pkg="detectron2_ros" type="detectron2_ros.py" output="screen" >
+  <node name="detectron2_ros" pkg="detectron2_ros" type="detectron2_ros" output="screen" >
     <param name="input" value="$(arg input)" />
     <param name="detection_threshold" value="$(arg detection_threshold)" />
     <param name="config" value="$(arg config)" />
